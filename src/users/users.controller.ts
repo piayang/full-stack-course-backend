@@ -1,23 +1,24 @@
 import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
-
+import { UsersService } from './users.service';
 @Controller('users')
 export class UsersController {
+  constructor(private readonly userService: UsersService) {}
   @Get('hello') // method GET
-  hello(): string {
-    return `abc`;
-  }
-  @Get('user')
-  myname(): { name: string; age: number } {
-    return { name: 'Pia YANG', age: 30 };
+  Gethello(): string {
+    return this.userService.hello();
   }
 
-  @Post('create')
-  create(@Body() { name, age }: { name: string; age: number }): {
+  // @Get('user')
+  // userInfor(): { name: string; age: number } {
+  //   return this.userService.userInfor{name,age}
+  // }
+
+  @Post('user_infor')
+  user_infor1(@Body() { name, age }: { name: string; age: number }): {
     myname: string;
     myage: number;
   } {
-    console.log({ name, age });
-    return { myname: name + 'abc', myage: age };
+    return this.userService.user_infor({ name, age });
   }
 
   @Put('update/:id')

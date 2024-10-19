@@ -83,3 +83,15 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+
+
+
+## docker command
+docker-compose up -d --build
+
+## if error : network nest-network declared as external, but could not be found
+step1: docker network create nest-network
+step2: docker-compose up -d --build  (maybe x2 times to completed)
+
